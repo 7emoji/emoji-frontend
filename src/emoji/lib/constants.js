@@ -22,6 +22,7 @@ export const INTEGERS = {
   INTEREST_RATE_BASE: new BigNumber('1e18'),
 }
 
+// TODO update addressMap
 export const addressMap = {
   uniswapFactory: '0xc0a47dFe034B400B47bDaD5FecDa2621de6c4d95',
   uniswapFactoryV2: '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f',
@@ -35,11 +36,12 @@ export const addressMap = {
   SNX: '0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F',
   COMP: '0xc00e94Cb662C3520282E6f5717214004A7f26888',
   LEND: '0x80fB784B7eD66730e8b1DBd9820aFD29931aab03',
-  SUSHIYCRV: '0x2C7a51A357d5739C5C74Bf3C96816849d2c9F726',
+  EMOJIYCRV: '0x2C7a51A357d5739C5C74Bf3C96816849d2c9F726',
 }
 
+// TODO set contract addresses
 export const contractAddresses = {
-  sushi: {
+  emoji: {
     1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
   },
   masterChef: {
@@ -65,9 +67,10 @@ UNI-V2 LP Address on mainnet for reference
 9  BAND 0xf421c3f2e695c2d4c0765379ccace8ade4a480d9
 10 AMPL 0xc5be99a02c6857f9eac67bbce58df5572498f40c
 11 YFI  0x2fdbadf3c4d5a8666bc06645b8358ab803996e28
-12 SUSHI 0xce84867c3c02b05dc570d0135103d3fb9cc19433
+12 EMOJI 0xce84867c3c02b05dc570d0135103d3fb9cc19433
 */
 
+// TODO: use correct addresses
 export const supportedPools = [
   {
     pid: 12,
@@ -77,9 +80,9 @@ export const supportedPools = [
     tokenAddresses: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
     },
-    name: 'Sushi Party!',
-    symbol: 'SUSHI-ETH UNI-V2 LP',
-    tokenSymbol: 'SUSHI',
+    name: 'Emoji Party!',
+    symbol: 'EMOJI-ETH UNI-V2 LP',
+    tokenSymbol: 'EMOJI',
     icon: '🍣',
   },
   {
@@ -285,9 +288,9 @@ export const supportedPools = [
     tokenAddresses: {
       1: '0xaba8cac6866b83ae4eec97dd07ed254282f6ad8a',
     },
-    name: 'SUSHIv2 SUSHI',
-    symbol: 'SUSHIv2-ETH UNI-V2 LP',
-    tokenSymbol: 'SUSHIv2',
+    name: 'EMOJIv2 EMOJI',
+    symbol: 'EMOJIv2-ETH UNI-V2 LP',
+    tokenSymbol: 'EMOJIv2',
     icon: '🍠',
   },
   {

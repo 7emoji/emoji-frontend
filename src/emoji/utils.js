@@ -13,26 +13,26 @@ const GAS_LIMIT = {
   },
 }
 
-export const getMasterChefAddress = (sushi) => {
-  return sushi && sushi.masterChefAddress
+export const getMasterChefAddress = (emoji) => {
+  return emoji && emoji.masterChefAddress
 }
-export const getSushiAddress = (sushi) => {
-  return sushi && sushi.sushiAddress
+export const getEmojiAddress = (emoji) => {
+  return emoji && emoji.emojiAddress
 }
-export const getWethContract = (sushi) => {
-  return sushi && sushi.contracts && sushi.contracts.weth
-}
-
-export const getMasterChefContract = (sushi) => {
-  return sushi && sushi.contracts && sushi.contracts.masterChef
-}
-export const getSushiContract = (sushi) => {
-  return sushi && sushi.contracts && sushi.contracts.sushi
+export const getWethContract = (emoji) => {
+  return emoji && emoji.contracts && emoji.contracts.weth
 }
 
-export const getFarms = (sushi) => {
-  return sushi
-    ? sushi.contracts.pools.map(
+export const getMasterChefContract = (emoji) => {
+  return emoji && emoji.contracts && emoji.contracts.masterChef
+}
+export const getEmojiContract = (emoji) => {
+  return emoji && emoji.contracts && emoji.contracts.emoji
+}
+
+export const getFarms = (emoji) => {
+  return emoji
+    ? emoji.contracts.pools.map(
         ({
           pid,
           name,
@@ -53,8 +53,8 @@ export const getFarms = (sushi) => {
           tokenAddress,
           tokenSymbol,
           tokenContract,
-          earnToken: 'sushi',
-          earnTokenAddress: sushi.contracts.sushi.options.address,
+          earnToken: 'emoji',
+          earnTokenAddress: emoji.contracts.emoji.options.address,
           icon,
         }),
       )
@@ -70,7 +70,7 @@ export const getPoolWeight = async (masterChefContract, pid) => {
 }
 
 export const getEarned = async (masterChefContract, pid, account) => {
-  return masterChefContract.methods.pendingSushi(pid, account).call()
+  return masterChefContract.methods.pendingEmoji(pid, account).call()
 }
 
 export const getTotalLPWethValue = async (
@@ -122,8 +122,8 @@ export const approve = async (lpContract, masterChefContract, account) => {
     .send({ from: account })
 }
 
-export const getSushiSupply = async (sushi) => {
-  return new BigNumber(await sushi.contracts.sushi.methods.totalSupply().call())
+export const getEmojiSupply = async (emoji) => {
+  return new BigNumber(await emoji.contracts.emoji.methods.totalSupply().call())
 }
 
 export const stake = async (masterChefContract, pid, amount, account) => {

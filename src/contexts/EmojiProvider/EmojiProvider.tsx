@@ -2,35 +2,35 @@ import React, { createContext, useEffect, useState } from 'react'
 
 import { useWallet } from 'use-wallet'
 
-import { Sushi } from '../../sushi'
+import { Emoji } from '../../emoji'
 
-export interface SushiContext {
-  sushi?: typeof Sushi
+export interface EmojiContext {
+  emoji?: typeof Emoji
 }
 
-export const Context = createContext<SushiContext>({
-  sushi: undefined,
+export const Context = createContext<EmojiContext>({
+  emoji: undefined,
 })
 
 declare global {
   interface Window {
-    sushisauce: any
+    emojisauce: any
   }
 }
 
-const SushiProvider: React.FC = ({ children }) => {
+const EmojiProvider: React.FC = ({ children }) => {
   const { ethereum }: { ethereum: any } = useWallet()
-  const [sushi, setSushi] = useState<any>()
+  const [emoji, setEmoji] = useState<any>()
 
   // @ts-ignore
-  window.sushi = sushi
+  window.emoji = emoji
   // @ts-ignore
   window.eth = ethereum
 
   useEffect(() => {
     if (ethereum) {
       const chainId = Number(ethereum.chainId)
-      const sushiLib = new Sushi(ethereum, chainId, false, {
+      const emojiLib = new Emoji(ethereum, chainId, false, {
         defaultAccount: ethereum.selectedAddress,
         defaultConfirmations: 1,
         autoGasMultiplier: 1.5,
@@ -40,12 +40,12 @@ const SushiProvider: React.FC = ({ children }) => {
         accounts: [],
         ethereumNodeTimeout: 10000,
       })
-      setSushi(sushiLib)
-      window.sushisauce = sushiLib
+      setEmoji(emojiLib)
+      window.emojisauce = emojiLib
     }
   }, [ethereum])
 
-  return <Context.Provider value={{ sushi }}>{children}</Context.Provider>
+  return <Context.Provider value={{ emoji }}>{children}</Context.Provider>
 }
 
-export default SushiProvider
+export default EmojiProvider

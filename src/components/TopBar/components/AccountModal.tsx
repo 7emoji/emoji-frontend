@@ -2,8 +2,8 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { useWallet } from 'use-wallet'
 import useTokenBalance from '../../../hooks/useTokenBalance'
-import useSushi from '../../../hooks/useSushi'
-import { getSushiAddress } from '../../../sushi/utils'
+import useEmoji from '../../../hooks/useEmoji'
+import { getEmojiAddress } from '../../../emoji/utils'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 import Button from '../../Button'
 import CardIcon from '../../CardIcon'
@@ -23,8 +23,8 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
     reset()
   }, [onDismiss, reset])
 
-  const sushi = useSushi()
-  const sushiBalance = useTokenBalance(getSushiAddress(sushi))
+  const emoji = useEmoji()
+  const emojiBalance = useTokenBalance(getEmojiAddress(emoji))
 
   return (
     <Modal>
@@ -38,8 +38,8 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
               <span>🍣</span>
             </CardIcon>
             <StyledBalance>
-              <Value value={getBalanceNumber(sushiBalance)} />
-              <Label text="SUSHI Balance" />
+              <Value value={getBalanceNumber(emojiBalance)} />
+              <Label text="EMOJI Balance" />
             </StyledBalance>
           </StyledBalanceWrapper>
         </div>
